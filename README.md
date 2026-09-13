@@ -6,8 +6,19 @@ Genesis402 is an in-progress proof and payment infrastructure stack with operati
 issuance and x402 settlement capability. Public verification, discovery, anchoring, and broader
 action-gating are being progressively released. Operated by UnyKorn LLC (Wyoming).
 
-This repository is the open part: the frozen receipt format, the offline verifier, the discovery
-documents that genesis402.com serves, and a one-file payer for the live rail.
+This repository is the **console producer toolkit**: the frozen `genesis402-receipt-v1` format that the
+UnyKorn operator console issues, its offline verifier, the interim discovery documents, and a one-file
+payer for the live rail.
+
+**Where it sits (ADR-0006, accepted 2026-09-13).** The canonical public interface of genesis402.com is
+the witness contract published in [FTHTrading/truth-adapters](https://github.com/FTHTrading/truth-adapters-):
+`truth-record-v1` and `truth-attestation-v1`. `genesis402-receipt-v1` is one producer format, witnessed
+one-way through the `g402-receipt` adapter. It does not define the Genesis402 platform contract, and
+`site/` here is not deployed to the apex.
+
+```
+console receipt-v1  →  g402-receipt adapter  →  truth-record-v1 (witnessed, signed, chained)
+```
 
 > Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt
 > reports an outcome under a declared scope, evidence state, policy version, and time.
@@ -17,9 +28,10 @@ documents that genesis402.com serves, and a one-file payer for the live rail.
 | Capability | State | Where |
 |---|---|---|
 | x402 payment rail (Base USDC, XRPL XRP) | **LIVE** | https://twin.unykorn.org |
-| Machine discovery on the canonical host | **LIVE** | https://genesis402.com/.well-known/x402 · [agent.json](https://genesis402.com/.well-known/agent.json) · [openapi.json](https://genesis402.com/openapi.json) · [status.json](https://genesis402.com/status.json) · [pricing.json](https://genesis402.com/pricing.json) |
+| Machine discovery on the canonical host | **LIVE** (interim Worker; superseded at cut-over by the gateway in truth-adapters) | https://genesis402.com/.well-known/x402 · [agent.json](https://genesis402.com/.well-known/agent.json) · [openapi.json](https://genesis402.com/openapi.json) · [status.json](https://genesis402.com/status.json) · [pricing.json](https://genesis402.com/pricing.json) |
 | Rail receipts (tx hash, replay-protected) | LIVE_LIMITED | returned by every paid call |
-| Proof receipt format | **FROZEN** `genesis402-receipt-v1` | [spec/genesis402-receipt-v1](spec/genesis402-receipt-v1/README.md) |
+| Public canonical formats `truth-record-v1` / `truth-attestation-v1` | see truth-adapters | [FTHTrading/truth-adapters](https://github.com/FTHTrading/truth-adapters-) |
+| Console producer format `genesis402-receipt-v1` | **FROZEN** (producer profile) | [spec/genesis402-receipt-v1](spec/genesis402-receipt-v1/README.md) |
 | Offline verifier + CLI | LOCAL_ONLY (this repo, not on npm yet) | [packages/verify](packages/verify/README.md) |
 | External anchoring of segment roots | NOT_YET_AVAILABLE, coverage 0% | — |
 | Agent action authorization | PAYMENTS_ONLY | operator desk, private |
@@ -60,10 +72,10 @@ spec/genesis402-receipt-v1/   the frozen format: envelope, canonicalization, tru
                               limitations policy, reason codes, security model, test vectors, examples
 spec/ADR-0002-…               approved and forbidden public language (the claims gate)
 packages/verify/              @genesis402/verify — offline verifier + CLI + fixtures
-discovery/                    the exact documents served at genesis402.com, plus the claims gate
-                              (check-claims.cjs) and the verify-served gate (verify-served.sh)
+discovery/                    interim discovery documents (served by a route-scoped Worker until the cut-over to the
+                              truth-adapters gateway), the claims gate (check-claims.cjs), verify-served gate
 examples/                     pay-with-x402.mjs
-site/                         homepage draft (not yet deployed)
+site/                         console-side homepage draft. NOT for the apex (ADR-0006).
 ```
 
 ## Truth labels, in one line each
@@ -83,4 +95,5 @@ inspectable.
 
 ## License
 
-MIT. Frozen spec 2026-09-13; changes go in `genesis402-receipt-v2`.
+MIT. Producer spec frozen 2026-09-13; changes go in `genesis402-receipt-v2`. The public contract lives in
+truth-adapters (ADR-0006); this repo adapts to it, not the other way round.
