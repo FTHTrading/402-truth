@@ -30,6 +30,7 @@ console receipt-v1  →  g402-receipt adapter  →  truth-record-v1 (witnessed, 
 | x402 payment rail (Base USDC, XRPL XRP) | **LIVE** | https://twin.unykorn.org |
 | Machine discovery on the canonical host | **LIVE** (interim Worker; superseded at cut-over by the gateway in truth-adapters) | https://genesis402.com/.well-known/x402 · [agent.json](https://genesis402.com/.well-known/agent.json) · [openapi.json](https://genesis402.com/openapi.json) · [status.json](https://genesis402.com/status.json) · [pricing.json](https://genesis402.com/pricing.json) |
 | Rail receipts (tx hash, replay-protected) | LIVE_LIMITED | returned by every paid call |
+| **Paid proof receipts** `POST /prove` (0.25 USDC): signed receipt-v1 for a digest, bound to your payment tx | **LIVE** | https://twin.unykorn.org/prove · keys at [/prove/keys](https://twin.unykorn.org/prove/keys) · lookup `/prove/receipts/{id}` |
 | Public canonical formats `truth-record-v1` / `truth-attestation-v1` | see truth-adapters | [FTHTrading/truth-adapters](https://github.com/FTHTrading/truth-adapters-) |
 | Console producer format `genesis402-receipt-v1` | **FROZEN** (producer profile) | [spec/genesis402-receipt-v1](spec/genesis402-receipt-v1/README.md) |
 | Offline verifier + CLI | LOCAL_ONLY (this repo, not on npm yet) | [packages/verify](packages/verify/README.md) |
@@ -40,13 +41,16 @@ console receipt-v1  →  g402-receipt adapter  →  truth-record-v1 (witnessed, 
 
 ## Buy something in 60 seconds
 
-Three tasks, 0.25 USDC each, one successful execution per payment proof, failed tasks release the proof.
+Four tasks, 0.25 USDC each, one successful execution per payment proof, failed tasks release the proof.
 
 ```bash
 cd examples && npm i
 X402_PAYER_KEY=0x<a Base wallet holding a few USDC, no ETH needed> node pay-with-x402.mjs genesis-sim '{"n":20,"epochs":20}'
 # DRY-RUN by default: fetches the 402, signs the EIP-3009 authorization, submits nothing.
 X402_LIVE=1 X402_PAYER_KEY=0x… node pay-with-x402.mjs genesis-sim '{"n":20,"epochs":20}'
+# buy a signed proof receipt for your own digest, then verify it offline:
+X402_LIVE=1 X402_PAYER_KEY=0x… node pay-with-x402.mjs prove '{"sha256":"<64 hex>","claim":"invoice 1042 existed before the dispute"}'
+curl -s https://twin.unykorn.org/prove/keys > keys.json   # then: g402-verify receipt receipt.json --keys keys.json
 ```
 
 The payer refuses any price above `X402_MAX_ATOMIC` (default 250000 = $0.25) and any asset that is not
