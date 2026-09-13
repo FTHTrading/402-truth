@@ -1,0 +1,6 @@
+node_modules/
+*.key.json
+.kek
+.env
+.env.*
+.wrangler/

@@ -1,0 +1,15 @@
+{
+  "name": "@genesis402/verify",
+  "version": "1.0.0",
+  "description": "Offline verifier for genesis402-receipt-v1: schema, canonical hash, Ed25519 issuer signature, RFC 6962 inclusion proof, append-only lifecycle, policy and request/response binding. Zero dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "bin": { "g402-verify": "bin/g402-verify.ts" },
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "fixtures": "node test/make-fixtures.ts"
+  },
+  "dependencies": {}
+}

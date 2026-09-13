@@ -1,0 +1,41 @@
+{
+  "policyId": "unykorn.fixture-settle.base.v1",
+  "policyVersion": 1,
+  "agentId": "fixture-settle",
+  "chainId": 8453,
+  "asset": {
+    "symbol": "USDC",
+    "contract": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+  },
+  "spend": {
+    "perTransactionMaxAtomic": "250000",
+    "rolling24hMaxAtomic": "1000000",
+    "lifetimeMaxAtomic": "5000000"
+  },
+  "destinationRules": {
+    "allowedRecipients": [
+      "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db"
+    ],
+    "allowedHostnames": [
+      "twin.unykorn.org"
+    ],
+    "allowedMethods": [
+      "GET",
+      "POST"
+    ],
+    "allowedResourcePrefixes": [
+      "/"
+    ]
+  },
+  "session": {
+    "notBefore": "2026-09-13T11:59:13.785Z",
+    "expiresAt": "2026-09-20T11:59:13.785Z",
+    "maxTransactions": 20,
+    "maxTransactionsPerHour": 10
+  },
+  "approval": {
+    "requireOperatorAboveAtomic": "1000000",
+    "requireOperatorAlways": false
+  },
+  "status": "active"
+}

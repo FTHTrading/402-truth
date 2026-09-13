@@ -1,0 +1,11 @@
+{
+  "name": "genesis402-examples",
+  "private": true,
+  "type": "module",
+  "description": "Pay a Genesis402 x402 task and verify what comes back.",
+  "dependencies": { "viem": "2.52.0" },
+  "scripts": {
+    "dry-run": "node pay-with-x402.mjs genesis-sim '{\"n\":20,\"epochs\":20}'",
+    "pay": "cross-env X402_LIVE=1 node pay-with-x402.mjs genesis-sim '{\"n\":20,\"epochs\":20}'"
+  }
+}

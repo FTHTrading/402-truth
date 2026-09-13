@@ -1,0 +1,238 @@
+{
+  "receipt": {
+    "binding": null,
+    "body": {
+      "bytes": 20,
+      "dealId": "deal_7844a638d475",
+      "kind": "draw request",
+      "name": "Draw request.txt",
+      "sha256": "058f1cbb89d44d811a55f16aa9888bd6241934bcd65d845b45a033e29c3cb341",
+      "uploadedBy": "fixtures"
+    },
+    "claim": {
+      "limitations": [
+        "The document name, kind, and source are uploader assertions.",
+        "Hashing does not establish authenticity, ownership, or legal effect of the document.",
+        "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+        "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+        "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+        "Not a legal opinion or guarantee."
+      ],
+      "scope": "The SHA-256 of the bytes supplied for this evidence item, as observed by unykorn-control at hashing time.",
+      "statement": "Bytes named \"Draw request.txt\" were hashed by unykorn-control; the name, kind and source are attested by the uploader, not verified."
+    },
+    "decision": {
+      "outcome": "OBSERVED",
+      "reasonCodes": [
+        "EVIDENCE.BYTES.HASHED"
+      ]
+    },
+    "evidence": {
+      "classification": "HASH_ONLY",
+      "count": 1,
+      "root": "sha256:058f1cbb89d44d811a55f16aa9888bd6241934bcd65d845b45a033e29c3cb341"
+    },
+    "issuer": {
+      "alg": "ed25519",
+      "id": "unykorn-control",
+      "keyId": "g402-key-25a7b4924d932aa9",
+      "signature": "0c9e0f07db13fd2b0427adb70e883bd1d387f924a597a90892e1626dabbb1802eab2f4b936bf0fe9d23288e49320e0f42a358533876635e19d4083e5db5e7103"
+    },
+    "kind": "evidence.hashed",
+    "lifecycle": {
+      "expiresAt": null,
+      "issuedAt": "2026-09-13T11:59:13.716Z",
+      "revocationStatusAtIssuance": "NOT_REVOKED",
+      "statusAtIssuance": "ACTIVE"
+    },
+    "mode": "LOCAL",
+    "policy": null,
+    "receiptId": "g402_rcpt_165c3afe7399",
+    "receiptVersion": "genesis402-receipt-v1",
+    "subject": {
+      "id": "ev_807ef2148ea5",
+      "type": "evidence"
+    },
+    "truthLabels": [
+      "OBSERVED",
+      "ATTESTED"
+    ],
+    "workflow": {
+      "id": "deal_7844a638d475",
+      "previousReceiptHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "sequence": 1,
+      "stateMachineId": "evidence-manifest",
+      "stateMachineVersion": "1.0.0"
+    },
+    "integrity": {
+      "canonicalBodyHash": "sha256:10d0afd5f06b1b5a588da5fe91f1f666604b82ab2f2f6cfff7d15b80763cc96c",
+      "leafHash": "b650fc3d0b5c81e6823354f6001b1ff03bd3cf2128361142ab20164bccae7562",
+      "segmentRoot": "73b978cea3a35bbb3cdb78333cbea7c054ee4eeb941fc8535399dca4ef117c49",
+      "inclusionProof": [
+        {
+          "hash": "0e48b79ebf4ababddc4dff029120fc49afbbb984083883172a3067c0d039b607",
+          "side": "right"
+        },
+        {
+          "hash": "e42078af3c55fc440ec5f9c82127bb42886d565e52b00ef24187d4ea61604314",
+          "side": "right"
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "binding": null,
+      "body": {
+        "effectiveAt": "2026-09-13T11:59:13.842Z",
+        "eventType": "REVOKED",
+        "note": "fixture revocation",
+        "reasonCode": "SUBJECT.EVIDENCE.WITHDRAWN",
+        "subjectCanonicalBodyHash": "sha256:10d0afd5f06b1b5a588da5fe91f1f666604b82ab2f2f6cfff7d15b80763cc96c",
+        "subjectReceiptId": "g402_rcpt_165c3afe7399",
+        "supersededByReceiptId": null
+      },
+      "claim": {
+        "limitations": [
+          "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+          "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+          "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+          "Not a legal opinion or guarantee."
+        ],
+        "scope": "The lifecycle status of receipt g402_rcpt_165c3afe7399 only.",
+        "statement": "Receipt g402_rcpt_165c3afe7399 is REVOKED effective 2026-09-13T11:59:13.842Z under reason SUBJECT.EVIDENCE.WITHDRAWN."
+      },
+      "decision": {
+        "outcome": "REVOKED",
+        "reasonCodes": [
+          "SUBJECT.EVIDENCE.WITHDRAWN"
+        ]
+      },
+      "evidence": {
+        "classification": "METADATA_ONLY",
+        "count": 0,
+        "root": null
+      },
+      "issuer": {
+        "alg": "ed25519",
+        "id": "unykorn-control",
+        "keyId": "g402-key-25a7b4924d932aa9",
+        "signature": "adbad39cf0a026571e290a26892ace158a0409ccd7941e8f3fbba4caa4bad5c93de1c05cc9efdb8a603710360a783826133cc42b987b666400350c9c7c0d1e0f"
+      },
+      "kind": "receipt.revoked",
+      "lifecycle": {
+        "expiresAt": null,
+        "issuedAt": "2026-09-13T11:59:13.842Z",
+        "revocationStatusAtIssuance": "NOT_REVOKED",
+        "statusAtIssuance": "ACTIVE"
+      },
+      "mode": "LOCAL",
+      "policy": null,
+      "receiptId": "g402_rcpt_75f84e52a573",
+      "receiptVersion": "genesis402-receipt-v1",
+      "subject": {
+        "id": "g402_rcpt_165c3afe7399",
+        "type": "receipt"
+      },
+      "truthLabels": [
+        "ATTESTED"
+      ],
+      "workflow": {
+        "id": "g402_rcpt_165c3afe7399",
+        "previousReceiptHash": "sha256:c69cfd7c63677392baf2c27d7056ca95233fb78f5b94bdef5bc680d00f217c0f",
+        "sequence": 7,
+        "stateMachineId": "receipt-lifecycle",
+        "stateMachineVersion": "1.0.0"
+      },
+      "integrity": {
+        "canonicalBodyHash": "sha256:0b27b224067688a308b6299ce72065ac576502d309c5fcec54b1deb3b37a5eb2",
+        "leafHash": "e934ec1a4ccc36adacf66da65275d590da01416e181f1bfd6952ed34986cdfe0",
+        "segmentRoot": "6c8f938e75f08fd65969950a764eba5b252d517acf626d32810d92546b6b9212",
+        "inclusionProof": [
+          {
+            "hash": "9d7fd4229d2a671fa52f6ec6bfb5d85104e4c6daad4ad5edbba5bdbab2b930aa",
+            "side": "left"
+          },
+          {
+            "hash": "7f3d4a3381a2025e82c07902af6bdf8594a1fa64055b1b41632d2d4f172de71d",
+            "side": "left"
+          },
+          {
+            "hash": "f553c6706731309d5199dfc6a9fb78cb0ddbda0c7e7b7d2307bfb1316fabe08e",
+            "side": "right"
+          }
+        ]
+      }
+    },
+    {
+      "binding": null,
+      "body": {
+        "effectiveAt": "2026-09-13T11:59:13.870Z",
+        "eventType": "SUPERSEDED",
+        "note": null,
+        "reasonCode": "ISSUER.ERROR.CORRECTED",
+        "subjectCanonicalBodyHash": "sha256:cdde59887182a1e09bb77510e4cc35c58ff929b7a5bce842f102ed5c27ffbe01",
+        "subjectReceiptId": "g402_rcpt_fdf1edd38b3d",
+        "supersededByReceiptId": "g402_rcpt_7292f9d73de6"
+      },
+      "claim": {
+        "limitations": [
+          "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+          "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+          "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+          "Not a legal opinion or guarantee."
+        ],
+        "scope": "The lifecycle status of receipt g402_rcpt_fdf1edd38b3d only.",
+        "statement": "Receipt g402_rcpt_fdf1edd38b3d is SUPERSEDED effective 2026-09-13T11:59:13.870Z under reason ISSUER.ERROR.CORRECTED."
+      },
+      "decision": {
+        "outcome": "SUPERSEDED",
+        "reasonCodes": [
+          "ISSUER.ERROR.CORRECTED"
+        ]
+      },
+      "evidence": {
+        "classification": "METADATA_ONLY",
+        "count": 0,
+        "root": null
+      },
+      "issuer": {
+        "alg": "ed25519",
+        "id": "unykorn-control",
+        "keyId": "g402-key-25a7b4924d932aa9",
+        "signature": "677b9a6b62765588da8ae1bfae68564008591d29cd0e7d971a7f7c138f69d3c8080fe6678a10b105bd1f60c3ebff674de91b08abedf9cb5275be37f8450c7205"
+      },
+      "kind": "receipt.superseded",
+      "lifecycle": {
+        "expiresAt": null,
+        "issuedAt": "2026-09-13T11:59:13.870Z",
+        "revocationStatusAtIssuance": "NOT_REVOKED",
+        "statusAtIssuance": "ACTIVE"
+      },
+      "mode": "LOCAL",
+      "policy": null,
+      "receiptId": "g402_rcpt_b8c61f782097",
+      "receiptVersion": "genesis402-receipt-v1",
+      "subject": {
+        "id": "g402_rcpt_fdf1edd38b3d",
+        "type": "receipt"
+      },
+      "truthLabels": [
+        "ATTESTED"
+      ],
+      "workflow": {
+        "id": "g402_rcpt_fdf1edd38b3d",
+        "previousReceiptHash": "sha256:697a000ee5a57c28b084ab1b62ab7b18f76efbf1758acf914c2d3cffe462d60e",
+        "sequence": 9,
+        "stateMachineId": "receipt-lifecycle",
+        "stateMachineVersion": "1.0.0"
+      },
+      "integrity": {
+        "canonicalBodyHash": "sha256:7f5d565293f273094de28df8b3796779abbdb3a17ddf7afeea51e07f896d6cc0",
+        "leafHash": "d097b9a47d7253fd829daf5ca785322892b28da9a2b2c32e28b537699d65c717",
+        "segmentRoot": "d097b9a47d7253fd829daf5ca785322892b28da9a2b2c32e28b537699d65c717",
+        "inclusionProof": []
+      }
+    }
+  ]
+}

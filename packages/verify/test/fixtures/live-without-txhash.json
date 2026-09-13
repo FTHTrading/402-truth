@@ -1,0 +1,108 @@
+{
+  "binding": {
+    "nonce": "0x50e6241306c2449a316251845e16a16698c7a07efc851db1601db26eb9fb0e1b",
+    "requestHash": "sha256:f754b8965acb48a473ae7fd30fe4c9d816532275466caee18773310f27e88d62",
+    "responseHash": null
+  },
+  "body": {
+    "amountAtomic": "250000",
+    "authorization": {
+      "from": "0xaB12D852D67a5220A7B1Fe3eA2BB22296FDbdF33",
+      "nonce": "0x50e6241306c2449a316251845e16a16698c7a07efc851db1601db26eb9fb0e1b",
+      "to": "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db",
+      "validAfter": "0",
+      "validBefore": "1789301653",
+      "value": "250000"
+    },
+    "decision": "OK",
+    "method": "GET",
+    "mode": "DRY-RUN",
+    "nonce": "0x50e6241306c2449a316251845e16a16698c7a07efc851db1601db26eb9fb0e1b",
+    "payTo": "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db",
+    "paymentId": "pay_552efeea3d8d",
+    "policyHash": "sha256:989037f8efaae75407f4f4469d11445baa70fe39e122d71fe6aa2a250e1cd3af",
+    "signature": "0x73151334ec938a36ebf36f3a6844acc8296fe8b618f85eb95b44541b5513d1090a88b34864b2761761069464917608725c58e6b122f8aca472b94914785b5f091c",
+    "submitted": false,
+    "twinAddress": "0xaB12D852D67a5220A7B1Fe3eA2BB22296FDbdF33",
+    "twinId": "fixture-settle",
+    "url": "https://twin.unykorn.org/genesis-sim"
+  },
+  "claim": {
+    "limitations": [
+      "DRY_RUN: no settlement occurred and no settlement claim is made.",
+      "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+      "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+      "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+      "Not a legal opinion or guarantee."
+    ],
+    "scope": "x402 payment pay_552efeea3d8d for GET https://twin.unykorn.org/genesis-sim, 250000 atomic USDC to 0x7d9a65d06dcc435a52d5880c6310bd6e96c156db. Nothing was submitted.",
+    "statement": "Policy evaluation returned OK and the twin's EIP-3009 authorization signature was verified. The authorization was NOT submitted; no funds moved."
+  },
+  "decision": {
+    "outcome": "AUTHORIZED_NOT_SUBMITTED",
+    "reasonCodes": [
+      "POLICY.OK",
+      "PAYMENT.AUTHORIZATION.SIGNED_NOT_SUBMITTED"
+    ]
+  },
+  "evidence": {
+    "classification": "METADATA_ONLY",
+    "count": 0,
+    "root": null
+  },
+  "issuer": {
+    "alg": "ed25519",
+    "id": "unykorn-control",
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "signature": "b1926367c05f8bcfb1e930c1800cce77fec71d94390d485164d61633d2922f35449e292af6098a2f891f033a2f722ffaa7c7828732236c53c4e83e113a469004"
+  },
+  "kind": "payment.dry_run",
+  "lifecycle": {
+    "expiresAt": "2026-09-13T12:14:13.000Z",
+    "issuedAt": "2026-09-13T11:59:13.828Z",
+    "revocationStatusAtIssuance": "NOT_REVOKED",
+    "statusAtIssuance": "ACTIVE"
+  },
+  "mode": "LIVE",
+  "policy": {
+    "hash": "sha256:989037f8efaae75407f4f4469d11445baa70fe39e122d71fe6aa2a250e1cd3af",
+    "id": "unykorn.fixture-settle.base.v1",
+    "version": "1"
+  },
+  "receiptId": "g402_rcpt_46e945cf29cd",
+  "receiptVersion": "genesis402-receipt-v1",
+  "subject": {
+    "id": "pay_552efeea3d8d",
+    "type": "payment"
+  },
+  "truthLabels": [
+    "VERIFIED",
+    "CONFIRMED"
+  ],
+  "workflow": {
+    "id": "pay_552efeea3d8d",
+    "previousReceiptHash": "sha256:612461733df20cb2ae2bd41dbb81988e5ef13f1909b82b3a5e1df23db41407dc",
+    "sequence": 5,
+    "stateMachineId": "x402-payment-delivery",
+    "stateMachineVersion": "1.0.0"
+  },
+  "integrity": {
+    "canonicalBodyHash": "sha256:13dd28671f537cf65f4e8e50cf132209f778e762da6ce812d4a5d8090b3ba467",
+    "leafHash": "500f1e63a5aa15356bce372a2affa5f2f3b5fe2d58f41370dc3439c2f75679f9",
+    "segmentRoot": "6c8f938e75f08fd65969950a764eba5b252d517acf626d32810d92546b6b9212",
+    "inclusionProof": [
+      {
+        "hash": "71d6bdb631e183e7dadc4d3d7f700aa86ad0bbbdbf825eab15184db63321cd82",
+        "side": "left"
+      },
+      {
+        "hash": "a855aa3a7130305f8466678cbb41f6417805c380e00431bb7dbd522874753faa",
+        "side": "right"
+      },
+      {
+        "hash": "f553c6706731309d5199dfc6a9fb78cb0ddbda0c7e7b7d2307bfb1316fabe08e",
+        "side": "right"
+      }
+    ]
+  }
+}

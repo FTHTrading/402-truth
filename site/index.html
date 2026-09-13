@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Genesis402</title>
+<meta name="description" content="Pay for proof, not promises. x402 payment-gated APIs that return signed, scoped, replayable receipts. Operated by UnyKorn LLC (Wyoming).">
+<link rel="alternate" type="application/json" href="/.well-known/x402">
+<style>
+:root{--ink:#0f1620;--soft:#55606e;--brass:#8c6118;--pass:#16704a;--warn:#9a6206;--rule:rgba(15,22,32,.12);--ground:#e9ecf1}
+*{box-sizing:border-box}body{margin:0;font:15px/1.6 "Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--ground)}
+main{max-width:860px;margin:0 auto;padding:48px 24px 80px}h1{font:700 40px/1.1 Georgia,serif;margin:0 0 8px}h2{font:600 20px/1.3 Georgia,serif;margin:36px 0 8px}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:600}.lede{font-size:18px;color:var(--soft);max-width:640px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+code,pre{font:12.5px/1.55 Consolas,ui-monospace,monospace}pre{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:12px 14px;overflow-x:auto}
+.st{display:inline-block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;font-weight:600;background:rgba(140,97,24,.1);color:var(--brass)}
+.st.live{background:rgba(22,112,74,.11);color:var(--pass)}.st.no{background:rgba(150,36,42,.1);color:#96242a}
+.rule{border-left:3px solid var(--brass);padding:10px 14px;background:#fff;border-radius:0 10px 10px 0;margin:18px 0}
+a{color:var(--brass)}footer{margin-top:48px;font-size:12.5px;color:var(--soft);border-top:1px solid var(--rule);padding-top:16px}
+</style>
+</head>
+<body>
+<main>
+<span class="eyebrow">Genesis402 · UnyKorn LLC (Wyoming)</span>
+<h1>Pay for proof, not promises.</h1>
+<p class="lede">x402 payment-gated APIs that return signed, scoped, replayable receipts. An in-progress proof and payment infrastructure stack: the payment rail is live; public verification, discovery, anchoring, and broader action-gating are being progressively released.</p>
+
+<div class="rule"><b>Authorized does not mean universally right. Refused does not mean universally wrong.</b> Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.</div>
+
+<h2>What an agent can buy today</h2>
+<table>
+<tr><th>Task</th><th>Returns</th><th>Price</th><th>State</th></tr>
+<tr><td><code>genesis-sim</code></td><td>Deterministic N-agent energy-exchange simulation with a SHA-256 commitment over the final state</td><td>0.25 USDC · 0.05 XRP</td><td><span class="st live">LIVE</span></td></tr>
+<tr><td><code>wallet-ops</code></td><td>Live balance read of the operator treasuries on Base, XRPL and Stellar, each figure stamped with its source</td><td>0.25 USDC · 0.05 XRP</td><td><span class="st live">LIVE</span></td></tr>
+<tr><td><code>rwa-screen</code></td><td>Readiness record for one covered US energy market from a curated static table. Not a live feed. Not investment, legal or tax advice.</td><td>0.25 USDC · 0.05 XRP</td><td><span class="st live">LIVE</span></td></tr>
+</table>
+<p>One successful execution per payment proof. A re-presented proof returns 409. A failed task releases the proof at no extra cost. The server sets the price; a payer never does.</p>
+
+<h2>Request. Pay. Verify. Act.</h2>
+<pre>POST https://twin.unykorn.org/genesis-sim        → 402 with accepts[] (price, asset, payTo)
+sign EIP-3009 TransferWithAuthorization for exactly that amount to exactly that payTo
+POST again with X-PAYMENT                         → 200 + result + receipt {receipt_id, tx_hash}</pre>
+<p>One file does it: <a href="https://github.com/FTHTrading/402-truth/blob/main/examples/pay-with-x402.mjs">examples/pay-with-x402.mjs</a> (dry-run by default).</p>
+
+<h2>Where this stands</h2>
+<table>
+<tr><th>Capability</th><th>State</th></tr>
+<tr><td>x402 payment rail</td><td><span class="st live">LIVE</span></td></tr>
+<tr><td>Machine discovery on this host</td><td><span class="st live">LIVE</span> <a href="/.well-known/x402">x402</a> · <a href="/.well-known/agent.json">agent.json</a> · <a href="/openapi.json">openapi</a> · <a href="/status.json">status</a> · <a href="/pricing.json">pricing</a></td></tr>
+<tr><td>Proof receipt format <code>genesis402-receipt-v1</code></td><td><span class="st">FROZEN</span> <a href="https://github.com/FTHTrading/402-truth/tree/main/spec/genesis402-receipt-v1">spec</a></td></tr>
+<tr><td>Offline verifier</td><td><span class="st">LOCAL_ONLY</span> <a href="https://github.com/FTHTrading/402-truth/tree/main/packages/verify">source</a>, not on npm yet</td></tr>
+<tr><td>External anchoring</td><td><span class="st no">NOT_YET_AVAILABLE</span> coverage 0%</td></tr>
+<tr><td>Agent action authorization</td><td><span class="st">PAYMENTS_ONLY</span></td></tr>
+<tr><td>RWA workflows</td><td><span class="st no">NOT_OFFERED</span></td></tr>
+</table>
+
+<h2>Truth labels</h2>
+<p>A label says how a statement came to be, never whether it is right. OBSERVED the issuer measured it · ATTESTED a named signer asserted it · VERIFIED a deterministic check passed · CONFIRMED an external system corroborated it · PENDING · REFUSED with reason codes · PROJECTION nothing was executed. Anchored, revoked, superseded and expired are derived by the verifier, never asserted at issuance.</p>
+
+<footer>UnyKorn LLC is a technology and administration service provider. It is not a bank, broker-dealer, exchange, custodian, trustee, transfer agent, appraiser, auditor, investment adviser, money transmitter, or issuer. No score, no reputation, no social credit. Security contact: <a href="/.well-known/security.txt">security.txt</a> · Source: <a href="https://github.com/FTHTrading/402-truth">FTHTrading/402-truth</a></footer>
+</main>
+</body>
+</html>

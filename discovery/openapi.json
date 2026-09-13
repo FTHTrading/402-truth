@@ -1,0 +1,73 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Genesis402 — live x402 task rail",
+    "version": "4.0.0",
+    "summary": "Only routes that are live today are listed. Planned capabilities are not.",
+    "description": "x402 payment-gated task execution operated by UnyKorn LLC (Wyoming). Unpaid requests receive HTTP 402 with payment requirements; a request carrying a valid X-PAYMENT authorization is settled, executed once, and answered with a rail receipt. Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+    "contact": { "name": "UnyKorn LLC", "email": "kevan@unykorn.org", "url": "https://genesis402.com" }
+  },
+  "servers": [{ "url": "https://twin.unykorn.org", "description": "Live rail (genesis402-task-server)" }],
+  "x-capability-maturity": {
+    "x402PaymentRail": "LIVE",
+    "paymentReceipts": "LIVE_LIMITED",
+    "proofReceiptVerifier": "LOCAL_ONLY",
+    "externalAnchoring": "NOT_YET_AVAILABLE",
+    "agentActionAuthorization": "PAYMENTS_ONLY",
+    "rwaWorkflows": "NOT_OFFERED"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "summary": "Rail status, payable lanes, replay-protection ledger totals",
+        "responses": { "200": { "description": "JSON status document" } }
+      }
+    },
+    "/.well-known/x402": {
+      "get": {
+        "operationId": "discovery",
+        "summary": "Machine-readable service catalog, prices, lanes, and terms (free)",
+        "responses": { "200": { "description": "x402 v2 discovery document" } }
+      }
+    },
+    "/genesis-sim": {
+      "post": {
+        "operationId": "genesisSim",
+        "summary": "Deterministic N-agent energy-exchange simulation (0.25 USDC)",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "params": { "type": "object", "properties": { "n": { "type": "integer", "minimum": 5, "maximum": 500, "default": 50 }, "epochs": { "type": "integer", "minimum": 10, "maximum": 200, "default": 100 } } } } } } } },
+        "parameters": [{ "$ref": "#/components/parameters/XPayment" }],
+        "responses": { "402": { "$ref": "#/components/responses/PaymentRequired" }, "200": { "$ref": "#/components/responses/PaidResult" }, "409": { "$ref": "#/components/responses/Replay" }, "503": { "$ref": "#/components/responses/LaneUnavailable" } }
+      }
+    },
+    "/wallet-ops": {
+      "post": {
+        "operationId": "walletOps",
+        "summary": "Live multi-chain treasury balance read (0.25 USDC)",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "properties": { "params": { "type": "object", "properties": { "chains": { "type": "array", "items": { "type": "string", "enum": ["base", "xrpl", "stellar"] } } } } } } } } },
+        "parameters": [{ "$ref": "#/components/parameters/XPayment" }],
+        "responses": { "402": { "$ref": "#/components/responses/PaymentRequired" }, "200": { "$ref": "#/components/responses/PaidResult" }, "409": { "$ref": "#/components/responses/Replay" }, "503": { "$ref": "#/components/responses/LaneUnavailable" } }
+      }
+    },
+    "/rwa-screen": {
+      "post": {
+        "operationId": "rwaScreen",
+        "summary": "Energy-market readiness lookup from a curated static table (0.25 USDC). Not investment, legal or tax advice.",
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object", "required": ["params"], "properties": { "params": { "type": "object", "required": ["market"], "properties": { "market": { "type": "string", "enum": ["texas", "florida", "newyork", "oregon"] } } } } } } } },
+        "parameters": [{ "$ref": "#/components/parameters/XPayment" }],
+        "responses": { "402": { "$ref": "#/components/responses/PaymentRequired" }, "200": { "$ref": "#/components/responses/PaidResult" }, "409": { "$ref": "#/components/responses/Replay" }, "503": { "$ref": "#/components/responses/LaneUnavailable" } }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "XPayment": { "name": "X-PAYMENT", "in": "header", "required": false, "description": "x402 v2 payment payload (base64 JSON). Base lane: {x402Version:2, scheme:'exact', network:'eip155:8453', payload:{signature, authorization:{from,to,value,validAfter,validBefore,nonce}}} — an EIP-3009 TransferWithAuthorization for USDC. Omit to receive the 402 challenge.", "schema": { "type": "string" } }
+    },
+    "responses": {
+      "PaymentRequired": { "description": "Payment requirements. `accepts[]` lists payable lanes with server-side price, asset, network and payTo. The server never reads a price from the payer." },
+      "PaidResult": { "description": "Task output plus `receipt` {receipt_id, task, rail, tx_hash, amount_usd, paid, settled_by, at}." },
+      "Replay": { "description": "tx_hash_already_consumed — each payment proof buys exactly one execution." },
+      "LaneUnavailable": { "description": "No lane can settle; no price is quoted; nothing is charged." }
+    }
+  }
+}

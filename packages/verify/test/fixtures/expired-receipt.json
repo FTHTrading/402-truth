@@ -1,0 +1,83 @@
+{
+  "binding": {
+    "nonce": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "responseHash": null
+  },
+  "body": {
+    "note": "fixture",
+    "paymentId": "pay_fixture_expired"
+  },
+  "claim": {
+    "limitations": [
+      "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+      "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+      "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+      "Not a legal opinion or guarantee."
+    ],
+    "scope": "fixture",
+    "statement": "expired fixture"
+  },
+  "decision": {
+    "outcome": "AUTHORIZED_NOT_SUBMITTED",
+    "reasonCodes": [
+      "POLICY.OK"
+    ]
+  },
+  "evidence": {
+    "classification": "METADATA_ONLY",
+    "count": 0,
+    "root": null
+  },
+  "issuer": {
+    "alg": "ed25519",
+    "id": "unykorn-control",
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "signature": "532e8fd53d23335ab9c8a8b795b50c746e1348ea269880c97a2666815b1e420b37c79a3a897a9f207ac4cc6abbae889080118739a1390ddbb461d36d59f53401"
+  },
+  "kind": "payment.dry_run",
+  "lifecycle": {
+    "expiresAt": "2026-01-01T00:00:00.000Z",
+    "issuedAt": "2026-09-13T11:59:13.836Z",
+    "revocationStatusAtIssuance": "NOT_REVOKED",
+    "statusAtIssuance": "ACTIVE"
+  },
+  "mode": "DRY_RUN",
+  "policy": null,
+  "receiptId": "g402_rcpt_b33b7a90700e",
+  "receiptVersion": "genesis402-receipt-v1",
+  "subject": {
+    "id": "pay_fixture_expired",
+    "type": "payment"
+  },
+  "truthLabels": [
+    "VERIFIED",
+    "PROJECTION"
+  ],
+  "workflow": {
+    "id": "pay_fixture_expired",
+    "previousReceiptHash": "sha256:13dd28671f537cf65f4e8e50cf132209f778e762da6ce812d4a5d8090b3ba467",
+    "sequence": 6,
+    "stateMachineId": "x402-payment-delivery",
+    "stateMachineVersion": "1.0.0"
+  },
+  "integrity": {
+    "canonicalBodyHash": "sha256:c69cfd7c63677392baf2c27d7056ca95233fb78f5b94bdef5bc680d00f217c0f",
+    "leafHash": "9d7fd4229d2a671fa52f6ec6bfb5d85104e4c6daad4ad5edbba5bdbab2b930aa",
+    "segmentRoot": "6c8f938e75f08fd65969950a764eba5b252d517acf626d32810d92546b6b9212",
+    "inclusionProof": [
+      {
+        "hash": "e934ec1a4ccc36adacf66da65275d590da01416e181f1bfd6952ed34986cdfe0",
+        "side": "right"
+      },
+      {
+        "hash": "7f3d4a3381a2025e82c07902af6bdf8594a1fa64055b1b41632d2d4f172de71d",
+        "side": "left"
+      },
+      {
+        "hash": "f553c6706731309d5199dfc6a9fb78cb0ddbda0c7e7b7d2307bfb1316fabe08e",
+        "side": "right"
+      }
+    ]
+  }
+}

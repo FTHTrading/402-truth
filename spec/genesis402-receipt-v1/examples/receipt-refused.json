@@ -1,0 +1,98 @@
+{
+  "binding": {
+    "nonce": "0x14ab67551e342adef499b733ecca149c8d0e238179264f5d64812cb16d789619",
+    "requestHash": "sha256:f754b8965acb48a473ae7fd30fe4c9d816532275466caee18773310f27e88d62",
+    "responseHash": null
+  },
+  "body": {
+    "amountAtomic": "250000",
+    "decision": "RECIPIENT_UNKNOWN",
+    "detail": "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db",
+    "method": "GET",
+    "nonce": "0x14ab67551e342adef499b733ecca149c8d0e238179264f5d64812cb16d789619",
+    "payTo": "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db",
+    "paymentId": "pay_950ad52b636b",
+    "policyHash": "sha256:d367b63e848c906332105642e3b37df6e98ee38e3b253a32dcd2d29cfbeca5ac",
+    "submitted": false,
+    "twinAddress": "0xaB12D852D67a5220A7B1Fe3eA2BB22296FDbdF33",
+    "twinId": "fixture-settle",
+    "url": "https://twin.unykorn.org/genesis-sim"
+  },
+  "claim": {
+    "limitations": [
+      "Refused under the twin's bound policy only; a different policy could yield a different outcome.",
+      "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+      "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+      "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+      "Not a legal opinion or guarantee."
+    ],
+    "scope": "x402 payment request pay_950ad52b636b for GET https://twin.unykorn.org/genesis-sim, 250000 atomic to 0x7d9a65d06dcc435a52d5880c6310bd6e96c156db.",
+    "statement": "Policy evaluation returned RECIPIENT_UNKNOWN. No authorization was signed and nothing was submitted."
+  },
+  "decision": {
+    "outcome": "REFUSED",
+    "reasonCodes": [
+      "POLICY.RECIPIENT_UNKNOWN"
+    ]
+  },
+  "evidence": {
+    "classification": "METADATA_ONLY",
+    "count": 0,
+    "root": null
+  },
+  "issuer": {
+    "alg": "ed25519",
+    "id": "unykorn-control",
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "signature": "7b0d20bd8a3967c2f8ecf434c32bc4b7bebe2f1ac43352cd80325d416bca60f6ae04d7dfaaadaf757b621728f2b262d1b05f1d57df96b5514beaec92ea2a230b"
+  },
+  "kind": "payment.refused",
+  "lifecycle": {
+    "expiresAt": null,
+    "issuedAt": "2026-09-13T11:59:13.795Z",
+    "revocationStatusAtIssuance": "NOT_REVOKED",
+    "statusAtIssuance": "ACTIVE"
+  },
+  "mode": "LOCAL",
+  "policy": {
+    "hash": "sha256:d367b63e848c906332105642e3b37df6e98ee38e3b253a32dcd2d29cfbeca5ac",
+    "id": "unykorn.fixture-settle.base.v1",
+    "version": "1"
+  },
+  "receiptId": "g402_rcpt_e5338e03e785",
+  "receiptVersion": "genesis402-receipt-v1",
+  "subject": {
+    "id": "pay_950ad52b636b",
+    "type": "payment"
+  },
+  "truthLabels": [
+    "VERIFIED",
+    "REFUSED"
+  ],
+  "workflow": {
+    "id": "pay_950ad52b636b",
+    "previousReceiptHash": "sha256:cdde59887182a1e09bb77510e4cc35c58ff929b7a5bce842f102ed5c27ffbe01",
+    "sequence": 4,
+    "stateMachineId": "x402-payment-delivery",
+    "stateMachineVersion": "1.0.0"
+  },
+  "integrity": {
+    "canonicalBodyHash": "sha256:612461733df20cb2ae2bd41dbb81988e5ef13f1909b82b3a5e1df23db41407dc",
+    "leafHash": "71d6bdb631e183e7dadc4d3d7f700aa86ad0bbbdbf825eab15184db63321cd82",
+    "segmentRoot": "6c8f938e75f08fd65969950a764eba5b252d517acf626d32810d92546b6b9212",
+    "inclusionProof": [
+      {
+        "hash": "500f1e63a5aa15356bce372a2affa5f2f3b5fe2d58f41370dc3439c2f75679f9",
+        "side": "right"
+      },
+      {
+        "hash": "a855aa3a7130305f8466678cbb41f6417805c380e00431bb7dbd522874753faa",
+        "side": "right"
+      },
+      {
+        "hash": "f553c6706731309d5199dfc6a9fb78cb0ddbda0c7e7b7d2307bfb1316fabe08e",
+        "side": "right"
+      }
+    ]
+  }
+}

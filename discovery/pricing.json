@@ -1,0 +1,24 @@
+{
+  "service": "Genesis402",
+  "operator": "UnyKorn LLC (Wyoming)",
+  "paymentProtocol": "x402",
+  "paymentSettlementMode": "LIVE",
+  "priceSource": "Prices are set server-side by the rail and returned in every HTTP 402 challenge. This file is a human-readable mirror; the challenge wins on any conflict.",
+  "items": [
+    { "id": "genesis-sim", "price": "0.25", "currency": "USDC", "network": "eip155:8453", "alternates": [{ "price": "0.05", "currency": "XRP", "network": "xrpl:mainnet" }], "unit": "one successful execution" },
+    { "id": "wallet-ops", "price": "0.25", "currency": "USDC", "network": "eip155:8453", "alternates": [{ "price": "0.05", "currency": "XRP", "network": "xrpl:mainnet" }], "unit": "one successful execution" },
+    { "id": "rwa-screen", "price": "0.25", "currency": "USDC", "network": "eip155:8453", "alternates": [{ "price": "0.05", "currency": "XRP", "network": "xrpl:mainnet" }], "unit": "one successful execution" }
+  ],
+  "deliveryPolicy": {
+    "unitOfSale": "one successful task execution per on-chain payment proof",
+    "replay": "each payment proof redeems exactly once; a re-presented proof returns HTTP 409",
+    "underpayment": "an amount below the server-side price is refused",
+    "failureAfterPayment": "the payment proof is released and can be re-presented at no extra cost",
+    "unavailable": "HTTP 503 and no price quoted when no lane can settle",
+    "refunds": "Base lane: funds do not move unless settlement succeeds. XRPL lane is pay-first: a failed verification leaves the proof retryable; unresolved cases are handled by contacting kevan@unykorn.org."
+  },
+  "notOffered": ["receipt verification as a paid service (verifier is LOCAL_ONLY)", "action authorization beyond payments", "RWA workflows"],
+  "limitations": [
+    "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time."
+  ]
+}

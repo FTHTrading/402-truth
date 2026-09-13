@@ -1,0 +1,6 @@
+{
+  "url": "https://twin.unykorn.org/genesis-sim",
+  "method": "POST",
+  "amountAtomic": "250000",
+  "payTo": "0x7d9a65d06dcc435a52d5880c6310bd6e96c156db"
+}

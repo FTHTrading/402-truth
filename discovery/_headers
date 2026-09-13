@@ -1,0 +1,19 @@
+/.well-known/x402
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+/.well-known/agent.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+/security.txt
+  Content-Type: text/plain; charset=utf-8
+/openapi.json
+  Content-Type: application/json; charset=utf-8
+/status.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=60
+/pricing.json
+  Content-Type: application/json; charset=utf-8
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

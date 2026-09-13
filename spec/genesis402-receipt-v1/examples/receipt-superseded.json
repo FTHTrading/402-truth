@@ -1,0 +1,93 @@
+{
+  "binding": null,
+  "body": {
+    "builtBy": "fixtures",
+    "checklist": null,
+    "completeness": null,
+    "dealId": "deal_7844a638d475",
+    "dealName": "FIXTURE-001 — Construction Draw",
+    "disclaimer": "Evidence/provenance record. Not an offer, solicitation, valuation, custody assertion, or proof of legal ownership.",
+    "docs": [
+      {
+        "bytes": 20,
+        "id": "ev_807ef2148ea5",
+        "kind": "draw request",
+        "name": "Draw request.txt",
+        "sha256": "058f1cbb89d44d811a55f16aa9888bd6241934bcd65d845b45a033e29c3cb341"
+      },
+      {
+        "bytes": 19,
+        "id": "ev_f0d121512c9d",
+        "kind": "lien waiver",
+        "name": "Lien waiver.txt",
+        "sha256": "91165009db274822cab9b8bfd2be254f49e70a518821dfdfcbfa16978780d61c"
+      }
+    ]
+  },
+  "claim": {
+    "limitations": [
+      "Completeness is measured against a declared checklist, not against any legal or lending standard.",
+      "No document content is included; hashes only.",
+      "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+      "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+      "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+      "Not a legal opinion or guarantee."
+    ],
+    "scope": "The set of evidence hashes attached to deal deal_7844a638d475 at manifest time.",
+    "statement": "A manifest of 2 evidence hash(es) was assembled; each hash was verified against the stored record. Checklist completeness is the builder's assessment."
+  },
+  "decision": {
+    "outcome": "ASSEMBLED",
+    "reasonCodes": [
+      "EVIDENCE.MANIFEST.ASSEMBLED"
+    ]
+  },
+  "evidence": {
+    "classification": "HASH_ONLY",
+    "count": 2,
+    "root": "sha256:0c58f6df62f994698e45d068ffba96047207a838cc3e2ba558e76e973ad079c9"
+  },
+  "issuer": {
+    "alg": "ed25519",
+    "id": "unykorn-control",
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "signature": "5e4d790a4896d4bba4ddbfc35aa0cb4a74e9c659e3f64794582e6b8425a0f7d35409416a0de6aa0fbb8eacdd470e8f0b0e35ff2a4481dac1598884552549af01"
+  },
+  "kind": "evidence.manifest",
+  "lifecycle": {
+    "expiresAt": null,
+    "issuedAt": "2026-09-13T11:59:13.738Z",
+    "revocationStatusAtIssuance": "NOT_REVOKED",
+    "statusAtIssuance": "ACTIVE"
+  },
+  "mode": "LOCAL",
+  "policy": null,
+  "receiptId": "g402_rcpt_fdf1edd38b3d",
+  "receiptVersion": "genesis402-receipt-v1",
+  "subject": {
+    "id": "deal_7844a638d475",
+    "type": "deal"
+  },
+  "truthLabels": [
+    "ATTESTED",
+    "VERIFIED"
+  ],
+  "workflow": {
+    "id": "deal_7844a638d475",
+    "previousReceiptHash": "sha256:755c7535c44e05394aaf6769a05cb26619c16d2bb8f5aa3000506a40074a53fb",
+    "sequence": 3,
+    "stateMachineId": "evidence-manifest",
+    "stateMachineVersion": "1.0.0"
+  },
+  "integrity": {
+    "canonicalBodyHash": "sha256:cdde59887182a1e09bb77510e4cc35c58ff929b7a5bce842f102ed5c27ffbe01",
+    "leafHash": "e42078af3c55fc440ec5f9c82127bb42886d565e52b00ef24187d4ea61604314",
+    "segmentRoot": "73b978cea3a35bbb3cdb78333cbea7c054ee4eeb941fc8535399dca4ef117c49",
+    "inclusionProof": [
+      {
+        "hash": "0c2e1082d0a7ca429f380441e3285a5719a795444829f563a2b773a961b48e3f",
+        "side": "left"
+      }
+    ]
+  }
+}

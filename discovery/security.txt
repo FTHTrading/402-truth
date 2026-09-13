@@ -1,0 +1,5 @@
+Contact: mailto:kevan@unykorn.org
+Expires: 2027-09-13T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://genesis402.com/.well-known/security.txt
+Policy: https://genesis402.com/llms.txt

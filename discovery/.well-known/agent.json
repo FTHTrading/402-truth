@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "genesis402-agent-card-1",
+  "name": "Genesis402",
+  "operator": "UnyKorn LLC (Wyoming)",
+  "description": "Pay for proof, not promises. x402 payment-gated APIs that return signed, scoped, replayable receipts. In-progress infrastructure: the payment rail is live; public verification, discovery, anchoring, and broader action-gating are being progressively released.",
+  "url": "https://genesis402.com",
+  "contact": "kevan@unykorn.org",
+  "paymentProtocols": ["x402"],
+  "discovery": {
+    "x402": "https://genesis402.com/.well-known/x402",
+    "x402Live": "https://twin.unykorn.org/.well-known/x402",
+    "openapi": "https://genesis402.com/openapi.json",
+    "status": "https://genesis402.com/status.json",
+    "pricing": "https://genesis402.com/pricing.json",
+    "llms": "https://genesis402.com/llms.txt",
+    "security": "https://genesis402.com/.well-known/security.txt"
+  },
+  "capabilityMaturity": {
+    "x402PaymentRail": "LIVE",
+    "paymentReceipts": "LIVE_LIMITED",
+    "proofReceiptFormat": "FROZEN (genesis402-receipt-v1)",
+    "proofReceiptVerifier": "LOCAL_ONLY",
+    "externalAnchoring": "NOT_YET_AVAILABLE",
+    "agentActionAuthorization": "PAYMENTS_ONLY",
+    "mcpServer": "NOT_YET_AVAILABLE",
+    "rwaWorkflows": "NOT_OFFERED"
+  },
+  "tools": [
+    {
+      "id": "genesis-sim",
+      "kind": "x402-paid-http",
+      "method": "POST",
+      "url": "https://twin.unykorn.org/genesis-sim",
+      "price": { "amount": "0.25", "currency": "USDC", "network": "eip155:8453", "alt": "0.05 XRP on XRPL" },
+      "input": { "params": { "n": "integer 5-500", "epochs": "integer 10-200" } },
+      "output": "deterministic simulation result with a SHA-256 commitment over the final state vector, plus a rail receipt",
+      "maturity": "LIVE"
+    },
+    {
+      "id": "wallet-ops",
+      "kind": "x402-paid-http",
+      "method": "POST",
+      "url": "https://twin.unykorn.org/wallet-ops",
+      "price": { "amount": "0.25", "currency": "USDC", "network": "eip155:8453", "alt": "0.05 XRP on XRPL" },
+      "input": { "params": { "chains": "optional array of base | xrpl | stellar" } },
+      "output": "live balance read of the operator treasuries, each figure stamped with its source endpoint",
+      "maturity": "LIVE"
+    },
+    {
+      "id": "rwa-screen",
+      "kind": "x402-paid-http",
+      "method": "POST",
+      "url": "https://twin.unykorn.org/rwa-screen",
+      "price": { "amount": "0.25", "currency": "USDC", "network": "eip155:8453", "alt": "0.05 XRP on XRPL" },
+      "input": { "params": { "market": "texas | florida | newyork | oregon" } },
+      "output": "readiness record from a curated static table; not a live feed; not investment, legal or tax advice",
+      "maturity": "LIVE"
+    }
+  ],
+  "safety": {
+    "spendGuidance": "Each call costs 0.25 USDC. Cap agent spend per call and per day; the rail refuses underpayment and never quotes a price a payer can set.",
+    "replay": "Each payment proof redeems exactly once (HTTP 409 on re-presentation).",
+    "failure": "A failed task releases the payment proof for re-presentation at no extra cost."
+  },
+  "truthLabels": "Receipts declare how a statement came to be (OBSERVED, ATTESTED, VERIFIED, CONFIRMED, PENDING, REFUSED, PROJECTION), never whether it is right.",
+  "limitations": [
+    "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+    "UnyKorn LLC is a technology and administration service provider. It is not a bank, broker-dealer, exchange, custodian, trustee, transfer agent, appraiser, auditor, investment adviser, money transmitter, or issuer."
+  ]
+}

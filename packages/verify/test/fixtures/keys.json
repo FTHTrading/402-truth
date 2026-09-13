@@ -1,0 +1,11 @@
+[
+  {
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "alg": "ed25519",
+    "issuer": "unykorn-control",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAdJOU9FqpuIbqN9LxMxb6yy2RqSNneP0o3SpbV0gat2c=\n-----END PUBLIC KEY-----\n",
+    "publicKeyHex": "749394f45aa9b886ea37d2f13316facb2d91a9236778fd28dd2a5b57481ab767",
+    "createdAt": "2026-09-13T11:59:13.643Z",
+    "status": "active"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "binding": null,
+  "body": {
+    "bytes": 20,
+    "dealId": "deal_7844a638d475",
+    "kind": "draw request",
+    "name": "Draw request.txt",
+    "sha256": "058f1cbb89d44d811a55f16aa9888bd6241934bcd65d845b45a033e29c3cb341",
+    "uploadedBy": "fixtures"
+  },
+  "claim": {
+    "limitations": [
+      "The document name, kind, and source are uploader assertions.",
+      "Hashing does not establish authenticity, ownership, or legal effect of the document.",
+      "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+      "This receipt does not establish universal truth, legal compliance, ownership, or the correctness of third-party content.",
+      "This receipt is valid only for the declared subject, policy, time window, and evidence set.",
+      "Not a legal opinion or guarantee."
+    ],
+    "scope": "The SHA-256 of the bytes supplied for this evidence item, as observed by unykorn-control at hashing time.",
+    "statement": "Bytes named \"Draw request.txt\" were hashed by unykorn-control; the name, kind and source are attested by the uploader, not verified."
+  },
+  "decision": {
+    "outcome": "OBSERVED",
+    "reasonCodes": [
+      "EVIDENCE.BYTES.HASHED"
+    ]
+  },
+  "evidence": {
+    "classification": "HASH_ONLY",
+    "count": 1,
+    "root": "sha256:058f1cbb89d44d811a55f16aa9888bd6241934bcd65d845b45a033e29c3cb341"
+  },
+  "issuer": {
+    "alg": "ed25519",
+    "id": "unykorn-control",
+    "keyId": "g402-key-25a7b4924d932aa9",
+    "signature": "0c9e0f07db13fd2b0427adb70e883bd1d387f924a597a90892e1626dabbb1802eab2f4b936bf0fe9d23288e49320e0f42a358533876635e19d4083e5db5e7103"
+  },
+  "kind": "evidence.hashed",
+  "lifecycle": {
+    "expiresAt": null,
+    "issuedAt": "2026-09-13T11:59:13.716Z",
+    "revocationStatusAtIssuance": "NOT_REVOKED",
+    "statusAtIssuance": "ACTIVE"
+  },
+  "mode": "LOCAL",
+  "policy": null,
+  "receiptId": "g402_rcpt_165c3afe7399",
+  "receiptVersion": "genesis402-receipt-v1",
+  "subject": {
+    "id": "ev_807ef2148ea5",
+    "type": "evidence"
+  },
+  "truthLabels": [
+    "OBSERVED",
+    "ATTESTED"
+  ],
+  "workflow": {
+    "id": "deal_7844a638d475",
+    "previousReceiptHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "sequence": 1,
+    "stateMachineId": "evidence-manifest",
+    "stateMachineVersion": "1.0.0"
+  },
+  "integrity": {
+    "canonicalBodyHash": "sha256:10d0afd5f06b1b5a588da5fe91f1f666604b82ab2f2f6cfff7d15b80763cc96c",
+    "leafHash": "b650fc3d0b5c81e6823354f6001b1ff03bd3cf2128361142ab20164bccae7562",
+    "segmentRoot": "73b978cea3a35bbb3cdb78333cbea7c054ee4eeb941fc8535399dca4ef117c49",
+    "inclusionProof": [
+      {
+        "hash": "0e48b79ebf4ababddc4dff029120fc49afbbb984083883172a3067c0d039b607",
+        "side": "right"
+      },
+      {
+        "hash": "e42078af3c55fc440ec5f9c82127bb42886d565e52b00ef24187d4ea61604314",
+        "side": "right"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+name: test
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '24' }
+      - name: verifier tests (zero deps)
+        run: cd packages/verify && node --test test/*.test.ts
+      - name: claims gate on discovery documents
+        run: node discovery/check-claims.js discovery
+      - name: example receipts verify offline
+        run: |
+          node packages/verify/bin/g402-verify.ts bundle spec/genesis402-receipt-v1/examples/bundle-authorized.json --keys spec/genesis402-receipt-v1/examples/keys.json
+          node packages/verify/bin/g402-verify.ts receipt spec/genesis402-receipt-v1/examples/receipt-refused.json --keys spec/genesis402-receipt-v1/examples/keys.json

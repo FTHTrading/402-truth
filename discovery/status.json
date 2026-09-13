@@ -1,0 +1,37 @@
+{
+  "service": "Genesis402",
+  "operator": "UnyKorn LLC (Wyoming)",
+  "environment": "LIVE",
+  "generatedAt": "2026-09-13T12:00:00.000Z",
+  "note": "Static snapshot published with the discovery documents. Live rail figures are read from https://twin.unykorn.org/health at request time by any client; this file does not update itself.",
+  "capabilityMaturity": {
+    "x402PaymentRail": "LIVE",
+    "paymentReceipts": "LIVE_LIMITED",
+    "proofReceiptFormat": "FROZEN (genesis402-receipt-v1, 2026-09-13)",
+    "proofReceiptVerifier": "LOCAL_ONLY",
+    "publicDiscoveryDocuments": "LIVE",
+    "externalAnchoring": "NOT_YET_AVAILABLE",
+    "agentActionAuthorization": "PAYMENTS_ONLY",
+    "receiptRevocationAndSupersession": "LOCAL_ONLY",
+    "rulePackRegistry": "NOT_YET_AVAILABLE",
+    "mcpServer": "NOT_YET_AVAILABLE",
+    "rwaWorkflows": "NOT_OFFERED"
+  },
+  "rail": {
+    "origin": "https://twin.unykorn.org",
+    "version": "4.0.0",
+    "payableLanes": ["base:usdc", "xrpl:xrp"],
+    "settledReceiptsAtSnapshot": 3,
+    "grossSettledUsdAtSnapshot": "0.7500",
+    "source": "https://twin.unykorn.org/health (replay_protection.ledger) on 2026-09-13"
+  },
+  "proof": {
+    "anchorCoveragePercent": 0,
+    "anchorStatement": "Segment roots are sealed locally with RFC 6962 inclusion proofs and are not yet externally anchored.",
+    "verifierDistribution": "not yet published; verification is possible offline with the reference verifier once distributed"
+  },
+  "limitations": [
+    "Authorized does not mean universally right. Refused does not mean universally wrong. Each receipt reports an outcome under a declared scope, evidence state, policy version, and time.",
+    "Figures marked AtSnapshot were true when this file was generated and are not live."
+  ]
+}
