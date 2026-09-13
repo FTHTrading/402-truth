@@ -43,7 +43,8 @@ Base USDC. The server sets the price; the payer never does.
 ## Verify a receipt without trusting anyone
 
 ```bash
-node packages/verify/bin/g402-verify.ts bundle spec/genesis402-receipt-v1/examples/bundle-authorized.json --keys spec/genesis402-receipt-v1/examples/keys.json
+node packages/verify/bin/g402-verify.ts bundle spec/genesis402-receipt-v1/examples/bundle-authorized.json --keys spec/genesis402-receipt-v1/examples/keys.json --at issuance
+# (a DRY_RUN authorization expires with its 15-minute validBefore; without --at issuance the same bundle reports EXPIRED, which is also correct)
 node packages/verify/bin/g402-verify.ts receipt spec/genesis402-receipt-v1/examples/receipt-revoked.json --keys spec/genesis402-receipt-v1/examples/keys.json --events spec/genesis402-receipt-v1/examples/lifecycle-events.json
 cd packages/verify && node --test test/*.test.ts     # 21 tests, 14 of them must-fail vectors
 ```
@@ -60,7 +61,7 @@ spec/genesis402-receipt-v1/   the frozen format: envelope, canonicalization, tru
 spec/ADR-0002-…               approved and forbidden public language (the claims gate)
 packages/verify/              @genesis402/verify — offline verifier + CLI + fixtures
 discovery/                    the exact documents served at genesis402.com, plus the claims gate
-                              (check-claims.js) and the verify-served gate (verify-served.sh)
+                              (check-claims.cjs) and the verify-served gate (verify-served.sh)
 examples/                     pay-with-x402.mjs
 site/                         homepage draft (not yet deployed)
 ```
@@ -69,16 +70,16 @@ site/                         homepage draft (not yet deployed)
 
 OBSERVED the issuer measured it · ATTESTED a named signer asserted it · VERIFIED a deterministic check
 passed · CONFIRMED an external system returned a corroborating artifact · PENDING · REFUSED with reason
-codes · PROJECTION nothing was executed. ANCHORED, REVOKED, SUPERSEDED, EXPIRED are derived by the
-verifier, never asserted at issuance.
+codes · PROJECTION nothing was executed. Derived states (anchoring, revocation, supersession, expiry)
+are computed by the verifier from later evidence, never asserted at issuance.
 
 ## What this is not
 
 Not a bank, broker-dealer, exchange, custodian, trustee, transfer agent, appraiser, auditor, investment
 adviser, money transmitter, or issuer. Receipts do not establish universal truth, legal compliance,
 ownership, or the correctness of third-party content. `rwa-screen` reads a curated static table and is
-not investment, legal or tax advice. No score, no reputation, no social credit: capabilities are scoped,
-expiring, and inspectable.
+not investment, legal or tax advice. No global scores of any kind: capabilities are scoped, expiring, and
+inspectable.
 
 ## License
 

@@ -40,11 +40,15 @@ const out = (obj: any, text: string, ok: boolean) => { console.log(opt.json ? JS
 if (!cmd || !file) { console.error('usage: g402-verify <receipt|bundle|chain|inclusion|lifecycle|policy|all> <file> [options]'); process.exit(2); }
 
 const keys = opt.keys ? readJson(String(opt.keys)) : [];
+// --at <ISO|issuance>: evaluate lifecycle as of that time (default: now). "issuance" = the receipt's issuedAt.
+const atFor = (rc: any): number | undefined => { const a = opt.at; if (!a) return undefined; if (a === 'issuance') return Date.parse(rc.lifecycle.issuedAt) + 1000; const t = Date.parse(String(a)); if (isNaN(t)) { console.error('bad --at'); process.exit(2); } return t; };
 if (cmd === 'receipt') {
-  const r = verifyReceipt(readJson(file), { keys, events: opt.events ? readJson(String(opt.events)) : [], segment: opt.segment ? readJson(String(opt.segment)) : null, rulepack: opt.rulepack ? readJson(String(opt.rulepack)) : undefined, request: opt.request ? readJson(String(opt.request)) : undefined, response: opt.response ? readJson(String(opt.response)) : undefined, requireActive: Boolean(opt['require-active']) });
+  const rc = readJson(file);
+  const r = verifyReceipt(rc, { keys, events: opt.events ? readJson(String(opt.events)) : [], segment: opt.segment ? readJson(String(opt.segment)) : null, rulepack: opt.rulepack ? readJson(String(opt.rulepack)) : undefined, request: opt.request ? readJson(String(opt.request)) : undefined, response: opt.response ? readJson(String(opt.response)) : undefined, requireActive: Boolean(opt['require-active']), atMs: atFor(rc) });
   out(r, human(r), r.overallStatus !== 'INVALID');
 } else if (cmd === 'bundle' || cmd === 'all') {
-  const r = verifyBundle(readJson(file), { keys, trustBundleKeys: Boolean(opt['trust-bundle-keys']), requireActive: Boolean(opt['require-active']) });
+  const b = readJson(file);
+  const r = verifyBundle(b, { keys, trustBundleKeys: Boolean(opt['trust-bundle-keys']), requireActive: Boolean(opt['require-active']), atMs: atFor(b.receipt) });
   out(r, human(r), r.overallStatus !== 'INVALID');
 } else if (cmd === 'chain') {
   const r = verifyChain(readJson(file));

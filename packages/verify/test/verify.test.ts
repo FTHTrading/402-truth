@@ -16,8 +16,14 @@ test('canonicalization test vector from CANONICALIZATION_SPEC.md', () => {
   assert.equal(canonicalize({ b: '1', a: [1, { z: 'x', y: null }] }), '{"a":[1,{"y":null,"z":"x"}],"b":"1"}');
 });
 
+// DRY_RUN receipts expire with their EIP-3009 validBefore (15 min), so evaluate at issuance time + 1s.
+const atIssuance = (rc: any) => Date.parse(rc.lifecycle.issuedAt) + 1000;
+
 test('valid authorized receipt: every check VALID, status ACTIVE, companion rule present', () => {
-  const r = verifyReceipt(rd('valid-authorized-receipt.json'), { keys, events, rulepack: rd('rulepack.json'), request: rd('request-authorized.json') });
+  const rc = rd('valid-authorized-receipt.json');
+  const r = verifyReceipt(rc, { keys, events, rulepack: rd('rulepack.json'), request: rd('request-authorized.json'), atMs: atIssuance(rc) });
+  const later = verifyReceipt(rc, { keys, events });
+  assert.equal(later.lifecycle, 'EXPIRED', 'the same receipt evaluated now (long after validBefore) is EXPIRED');
   assert.equal(r.overallStatus, 'VALID_WITH_LIMITATIONS', JSON.stringify(r.findings));
   for (const k of ['schema', 'canonicalHash', 'signature', 'leafHash', 'inclusionProof', 'policyBinding', 'requestBinding', 'lifecycle'] as const) assert.equal(r.checks[k], 'VALID', k);
   assert.equal(r.checks.responseBinding, 'SKIPPED');
@@ -36,7 +42,8 @@ test('valid refusal receipt verifies and carries the policy reason code', () => 
 
 test('bundle verifies offline with --trust-bundle-keys, and is rejected without any key', () => {
   const b = rd('valid-bundle.json');
-  assert.equal(verifyBundle(b, { trustBundleKeys: true }).overallStatus, 'VALID_WITH_LIMITATIONS');
+  const vb = verifyBundle(b, { trustBundleKeys: true, atMs: atIssuance(b.receipt) });
+  assert.equal(vb.overallStatus, 'VALID_WITH_LIMITATIONS'); assert.equal(vb.lifecycle, 'ACTIVE');
   const r = verifyBundle(b, {});
   assert.equal(r.overallStatus, 'INVALID'); assert.ok(codes(r).includes('SIGNATURE.KEY.UNKNOWN'));
 });

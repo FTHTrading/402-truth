@@ -29,7 +29,7 @@ for f in /.well-known/x402 /.well-known/agent.json /openapi.json /status.json /p
 done
 echo "--- claims gate on SERVED bytes ---"
 rm -f "$OUT"/*.headers "$OUT"/.well-known/*.headers
-node "$(dirname "$0")/check-claims.js" "$OUT" || fail=1
+node "$(dirname "$0")/check-claims.cjs" "$OUT" || fail=1
 echo "--- served vs reviewed drafts (byte diff after JSON normalisation) ---"
 D="$(dirname "$0")/genesis402"
 for f in /.well-known/x402 /.well-known/agent.json /openapi.json /status.json /pricing.json; do
